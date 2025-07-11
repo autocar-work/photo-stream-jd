@@ -15,7 +15,7 @@
 
     <img class="lazyload" data-src="{{ safe_name | processed_path: 'thumbnail' }}" src="{{ safe_name | processed_path: 'tint' }}" height="{{ image_path | exif: 'height'}}" width="{{ image_path | exif: 'width'}}" />
     <span class="full">
-        <span style="background-image: url('{{ safe_name | processed_path: 'large' }}')"></span>
+        <span style="background-image: url('{{ 'photos/original/' | append: image.name | uri_escape }}');"></span>
     </span>
     <a class="open" href="{{ slug | relative_url  }}" data-target="id-{{ slug }}">Open</a>
     <a class="close" href="{{ '/' | relative_url }}">Close</a>

@@ -34,7 +34,7 @@
 			<published>{{ image_path | exif: 'date_time' | date_to_xmlschema}}</published>
 			<updated>{{ image_path | exif: 'date_time' | date_to_xmlschema}}</updated>
 			<id>{{ site.env.URL }}/{{ image.name | strip_extension | slugify }}/</id>
-			<content type="html"><![CDATA[<figure><a href="{{ site.env.URL }}/{{ image.name | strip_extension | slugify }}/"><img src="{{ site.env.URL }}{{ image.name | uri_escape | processed_path: 'large' }}" alt="{{ image.name | strip_extension }}" /></a></figure>]]>
+			<content type="html"><![CDATA[<figure><a href="{{ site.env.URL }}/{{ image.name | strip_extension | slugify }}/"><img src="{{ site.env.URL }}/{{ image_path | uri_escape }}" alt="{{ image.name | strip_extension }}" /></a></figure>]]>
 			</content>
 			{% if site.env.AUTHOR_NAME %}
 			<author>
@@ -49,8 +49,8 @@
 				{% endif %}
 			</author>
 			{% endif %}
-			<media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="{{ site.env.URL }}{{ image.name | uri_escape | processed_path: 'large' }}" />
-			<media:content medium="image" url="{{ site.env.URL }}{{ image.name | uri_escape | processed_path: 'large' }}" xmlns:media="http://search.yahoo.com/mrss/" />
+			<media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="{{ site.env.URL }}/{{ image_path | uri_escape }}" />
+			<media:content medium="image" url="{{ site.env.URL }}/{{ image_path | uri_escape }}" xmlns:media="http://search.yahoo.com/mrss/" />
 		</entry>
 	{% endfor %}
 </feed>
